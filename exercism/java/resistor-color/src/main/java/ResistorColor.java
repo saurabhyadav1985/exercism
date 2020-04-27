@@ -15,6 +15,6 @@ class ResistorColor {
 	}
 
 	enum Color {
-		black, brown, red, orange, yellow, green, blue, violet, grey, white;
+		BLACK, BROWN, RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, GREY, WHITE;
 	}
 }
