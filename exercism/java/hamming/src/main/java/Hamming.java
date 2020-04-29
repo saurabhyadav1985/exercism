@@ -14,7 +14,7 @@ public class Hamming {
 	public int getHammingDistance() {
 		int distance = 0;
 		for (int index = 0; index < leftStrand.length(); index++) {
-			if (leftStrand.charAt(index) == rightStrand.charAt(index))
+			if (leftStrand.charAt(index) != rightStrand.charAt(index))
 				distance++;
 		}
 		return distance;
