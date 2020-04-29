@@ -1,39 +1,67 @@
+import java.util.Random;
+
 class DnDCharacter {
 
-    int ability() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	Random random = new Random();
+	int modifier;
+	
+	int ability() {
+		return 6;
+	}
 
-    int modifier(int input) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	int modifier(int input) {
+		modifier =(int) Math.floor((input - 10)/2.0);
+		return modifier;
+	}
 
-    int getStrength() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	int getStrength() {
+		return calculateRandomAbility();
+	}
 
-    int getDexterity() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	int getDexterity() {
+		return calculateRandomAbility();
+	}
 
-    int getConstitution() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	int getConstitution() {
+		return calculateRandomAbility();
+	}
 
-    int getIntelligence() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	int getIntelligence() {
+		return calculateRandomAbility();
+	}
 
-    int getWisdom() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	int getWisdom() {
+		return calculateRandomAbility();
+	}
 
-    int getCharisma() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	int getCharisma() {
+		return calculateRandomAbility();
+	}
 
-    int getHitpoints() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	int getHitpoints() {
+		return 10 - modifier;
+	}
+
+	int calculateRandomAbility() {
+		int[] arr = new int[4];
+		int min = 0;
+		for (int i = 0; i < 4; i++) {
+			int temp = random.nextInt(6);
+			if (temp < min)
+				min = temp;
+			arr[i] = temp;
+		}
+
+		int sum = 0;
+		boolean flag = true;
+		for (int element : arr) {
+			if (element < min && flag) {
+				continue;
+			}
+			sum = sum + element;
+			flag = false;
+		}
+		return sum;
+	}
 
 }
