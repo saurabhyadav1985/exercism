@@ -1,43 +1,63 @@
 class SpaceAge {
 
-    SpaceAge(double seconds) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	double seconds;
+	int earthAge = 31557600;
+	
+	SpaceAge(double seconds) {
+		if (seconds < 0) {
+			throw new IllegalArgumentException("Age can not be negative");
+		}
+		this.seconds = seconds;
+	}
 
-    double getSeconds() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	double getSeconds() {
+		return seconds;
+	}
 
-    double onEarth() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	double onEarth() {
+		return seconds/earthAge;
+	}
 
-    double onMercury() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	double onMercury() {
+		return onEarth() / OrbitalPeriod.MERCURY.getPeriodFactor();
+	}
 
-    double onVenus() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	double onVenus() {
+		return onEarth() / OrbitalPeriod.VENUS.getPeriodFactor();
+	}
 
-    double onMars() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	double onMars() {
+		return onEarth() / OrbitalPeriod.MARS.getPeriodFactor();
+	}
 
-    double onJupiter() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	double onJupiter() {
+		return onEarth() / OrbitalPeriod.JUPITER.getPeriodFactor();
+	}
 
-    double onSaturn() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	double onSaturn() {
+		return onEarth() / OrbitalPeriod.SATURN.getPeriodFactor();
+	}
 
-    double onUranus() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	double onUranus() {
+		return onEarth() / OrbitalPeriod.URANUS.getPeriodFactor();
+	}
 
-    double onNeptune() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	double onNeptune() {
+		return onEarth() / OrbitalPeriod.NEPTUNE.getPeriodFactor();
+	}
 
+	enum OrbitalPeriod {
+		EARTH(1.0),MERCURY(0.2408467),VENUS(0.61519726),MARS(1.8808158),JUPITER(11.862615),SATURN(29.447498),URANUS(84.016846),NEPTUNE(164.79132);
+		
+		private double periodFactor;
+
+		private OrbitalPeriod(double periodFactor) {
+			this.periodFactor = periodFactor;
+		}
+		
+		public double getPeriodFactor() {
+			return periodFactor;
+		}
+
+	}
 }
