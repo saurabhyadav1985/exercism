@@ -2,6 +2,7 @@ class SpaceAge {
 
 	double seconds;
 	int earthAge = 31557600;
+	double age = 0;
 	
 	SpaceAge(double seconds) {
 		if (seconds < 0) {
@@ -15,7 +16,13 @@ class SpaceAge {
 	}
 
 	double onEarth() {
-		return seconds/earthAge;
+		if(age != 0) {
+			// Do nothing
+		}
+		else {
+			age = seconds/earthAge;
+		}
+		return age;
 	}
 
 	double onMercury() {
