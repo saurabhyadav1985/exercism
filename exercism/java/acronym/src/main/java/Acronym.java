@@ -1,11 +1,26 @@
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 class Acronym {
 
+	private String phrase;
+	private String shortForm;
+	
     Acronym(String phrase) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+    	if(phrase.isEmpty()) {
+    		throw new IllegalArgumentException("Phrase can not be empty");
+    	}
+        this.phrase = phrase;
     }
 
     String get() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+    	generateShortForm();
+        return shortForm;
+    }
+    
+    void generateShortForm() {
+    	String[] parts = phrase.split(" ");
+    	shortForm = Arrays.stream(parts).map(part -> String.valueOf(part.charAt(0))).collect(Collectors.joining());
     }
 
 }
