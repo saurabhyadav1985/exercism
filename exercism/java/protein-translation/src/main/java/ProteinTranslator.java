@@ -11,7 +11,7 @@ class ProteinTranslator {
 		
 		List<String> translation = new ArrayList<>();
 		for (String seq : sequences) {
-			String protein = Codon.valueOf(Codon.class, seq).getProtein();
+			String protein = Codon.valueOf(seq).getProtein();
 			if (protein.equals("STOP")) {
 				break;
 			}
