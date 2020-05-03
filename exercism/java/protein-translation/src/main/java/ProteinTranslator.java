@@ -4,7 +4,7 @@ import java.util.List;
 class ProteinTranslator {
 
 	List<String> translate(String rnaSequence) {
-		String[] sequences = rnaSequence.split("^[A-Z]{3}$");
+		String[] sequences = rnaSequence.split("(?<=\\\\G...)");
 		List<String> translation = new ArrayList<>();
 		for (String seq : sequences) {
 			String protein = Codon.valueOf(Codon.class, seq).getProtein();
