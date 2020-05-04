@@ -1,5 +1,9 @@
 class MicroBlog {
-    public String truncate(String input) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-    }
+	public String truncate(String input) {
+		if (input.length() <= 5) {
+			return input;
+		} else {
+			return input.substring(0, 5);
+		}
+	}
 }
