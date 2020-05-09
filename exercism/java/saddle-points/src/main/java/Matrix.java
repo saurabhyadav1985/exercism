@@ -4,8 +4,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
-
 class Matrix {
 
 	List<List<Integer>> values;
@@ -13,9 +11,11 @@ class Matrix {
 	List<Integer> maxColumnValue;
 
 	Matrix(List<List<Integer>> values) {
+		
 		this.values = values;
 		this.maxRowValue = new ArrayList<>();
 		this.maxColumnValue = new ArrayList<>();
+		System.out.println("Values " + values);
 		calculateMaxValues();
 	}
 
@@ -24,21 +24,26 @@ class Matrix {
 			maxRowValue.add(Collections.max(values.get(index)));
 			int max = 0;
 			for (int innerIndex = 0; innerIndex < values.get(0).size(); innerIndex++) {
-				if (max < values.get(index).get(innerIndex)) {
-					max = values.get(index).get(innerIndex);
+				System.out.println("Max " + max + " current column " + values.get(innerIndex).get(index));
+				if (max < values.get(innerIndex).get(index)) {
+					max = values.get(innerIndex).get(index);
 				}
 			}
 			maxColumnValue.add(max);
 		}
+		System.out.println("Row Max " + maxRowValue);
+		System.out.println("Column Max " + maxColumnValue);
+
 	}
 
 	Set<MatrixCoordinate> getSaddlePoints() {
 		Set<MatrixCoordinate> coordinates = new HashSet<>();
 		for(int outerIndex =0; outerIndex < values.size(); outerIndex++) {
 			for(int innerIndex =0; innerIndex < values.get(0).size(); innerIndex++) {
-				int current = values.get(outerIndex).get(innerIndex);
+				System.out.println(outerIndex + " " + innerIndex);
+				int current = values.get(innerIndex).get(outerIndex);
 				if(current == maxRowValue.get(outerIndex) && current == maxColumnValue.get(innerIndex)) {
-					coordinates.add(new MatrixCoordinate(outerIndex, innerIndex));
+					coordinates.add(new MatrixCoordinate(innerIndex+1, outerIndex+1));
 				}
 			}
 		}
