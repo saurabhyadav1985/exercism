@@ -1,7 +1,7 @@
 class MatrixCoordinate implements Comparable<MatrixCoordinate> {
     private final int row;
     private final int col;
-
+    
     MatrixCoordinate(final int row, final int col) {
         this.row = row;
         this.col = col;
