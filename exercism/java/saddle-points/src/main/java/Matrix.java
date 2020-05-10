@@ -11,7 +11,6 @@ class Matrix {
 	List<Integer> minColumnValue;
 
 	Matrix(List<List<Integer>> values) {
-		
 		this.values = values;
 		this.maxRowValue = new ArrayList<>();
 		this.minColumnValue = new ArrayList<>();
