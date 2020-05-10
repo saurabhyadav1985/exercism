@@ -22,7 +22,6 @@ class Matrix {
 			maxRowValue.add(Collections.max(values.get(index)));
 			int min = Integer.MAX_VALUE;
 			for (int innerIndex = 0; innerIndex < values.get(0).size(); innerIndex++) {
-				System.out.println("Min " + min + " current column " + values.get(innerIndex).get(index));
 				if (values.get(innerIndex).get(index) < min) {
 					min = values.get(innerIndex).get(index);
 				}
