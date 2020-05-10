@@ -43,6 +43,7 @@ class Matrix {
 				System.out.println(outerIndex + "," + innerIndex + " = " + current);
 				
 				if(current == maxRowValue.get(outerIndex) && current == minColumnValue.get(innerIndex)) {
+					System.out.println("Condition satisfied for " + current);
 					coordinates.add(new MatrixCoordinate(innerIndex + 1, outerIndex+1));
 				}
 			}
