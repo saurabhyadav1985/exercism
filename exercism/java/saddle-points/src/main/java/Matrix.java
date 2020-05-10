@@ -8,13 +8,13 @@ class Matrix {
 
 	List<List<Integer>> values;
 	List<Integer> maxRowValue;
-	List<Integer> maxColumnValue;
+	List<Integer> minColumnValue;
 
 	Matrix(List<List<Integer>> values) {
 		
 		this.values = values;
 		this.maxRowValue = new ArrayList<>();
-		this.maxColumnValue = new ArrayList<>();
+		this.minColumnValue = new ArrayList<>();
 		System.out.println("Values " + values);
 		calculateMaxValues();
 	}
@@ -22,17 +22,17 @@ class Matrix {
 	private void calculateMaxValues() {
 		for (int index = 0; index < values.size(); index++) {
 			maxRowValue.add(Collections.max(values.get(index)));
-			int max = 0;
+			int min = Integer.MAX_VALUE;
 			for (int innerIndex = 0; innerIndex < values.get(0).size(); innerIndex++) {
-				System.out.println("Max " + max + " current column " + values.get(innerIndex).get(index));
-				if (max < values.get(innerIndex).get(index)) {
-					max = values.get(innerIndex).get(index);
+				System.out.println("Min " + min + " current column " + values.get(innerIndex).get(index));
+				if (values.get(innerIndex).get(index) < min) {
+					min = values.get(innerIndex).get(index);
 				}
 			}
-			maxColumnValue.add(max);
+			minColumnValue.add(min);
 		}
 		System.out.println("Row Max " + maxRowValue);
-		System.out.println("Column Max " + maxColumnValue);
+		System.out.println("Column Max " + minColumnValue);
 
 	}
 
@@ -40,10 +40,13 @@ class Matrix {
 		Set<MatrixCoordinate> coordinates = new HashSet<>();
 		for(int outerIndex =0; outerIndex < values.size(); outerIndex++) {
 			for(int innerIndex =0; innerIndex < values.get(0).size(); innerIndex++) {
-				System.out.println(outerIndex + " " + innerIndex);
+
 				int current = values.get(innerIndex).get(outerIndex);
-				if(current == maxRowValue.get(outerIndex) && current == maxColumnValue.get(innerIndex)) {
-					coordinates.add(new MatrixCoordinate(innerIndex+1, outerIndex+1));
+				
+				System.out.println(outerIndex + "," + innerIndex + " = " + current);
+				
+				if(current == maxRowValue.get(outerIndex) && current == minColumnValue.get(innerIndex)) {
+					coordinates.add(new MatrixCoordinate(innerIndex + 1, outerIndex+1));
 				}
 			}
 		}
