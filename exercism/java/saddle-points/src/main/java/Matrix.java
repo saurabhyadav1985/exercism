@@ -35,16 +35,16 @@ class Matrix {
 		System.out.println("Row Max " + maxRowValue);
 		System.out.println("Col Min " + minColumnValue);
 		Set<MatrixCoordinate> coordinates = new HashSet<>();
-		for(int outerIndex =0; outerIndex < values.size(); outerIndex++) {
-			for(int innerIndex =0; innerIndex < values.get(0).size(); innerIndex++) {
+		for(int rowIndex =0; rowIndex < values.size(); rowIndex++) {
+			for(int columnIndex =0; columnIndex < values.get(0).size(); columnIndex++) {
 
-				int current = values.get(innerIndex).get(outerIndex);
+				int current = values.get(rowIndex).get(columnIndex);
 				
-				System.out.println(outerIndex + "," + innerIndex + " = " + current);
+				System.out.println(rowIndex + "," + columnIndex + " = " + current);
 				
-				if(current == maxRowValue.get(outerIndex) && current == minColumnValue.get(innerIndex)) {
+				if(current == maxRowValue.get(rowIndex) && current == minColumnValue.get(columnIndex)) {
 					System.out.println("Condition satisfied for " + current);
-					coordinates.add(new MatrixCoordinate(innerIndex + 1, outerIndex+1));
+					coordinates.add(new MatrixCoordinate(rowIndex + 1, columnIndex+1));
 				}
 			}
 		}
