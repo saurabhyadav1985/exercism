@@ -33,7 +33,7 @@ class Matrix {
 	Set<MatrixCoordinate> getSaddlePoints() {
 		System.out.println("Values " + values);
 		System.out.println("Row Max " + maxRowValue);
-		System.out.println("Column Max " + minColumnValue);
+		System.out.println("Col Min " + minColumnValue);
 		Set<MatrixCoordinate> coordinates = new HashSet<>();
 		for(int outerIndex =0; outerIndex < values.size(); outerIndex++) {
 			for(int innerIndex =0; innerIndex < values.get(0).size(); innerIndex++) {
