@@ -18,12 +18,21 @@ class Matrix {
 	}
 
 	private void calculateMaxValues() {
-		for (int index = 0; index < values.size(); index++) {
-			maxRowValue.add(Collections.max(values.get(index)));
+		int rowSize = values.size();
+		if(rowSize ==0) {
+			return;
+		}
+		
+		int columnSize = values.get(0).size();
+		for (int rowIndex = 0; rowIndex < rowSize; rowIndex++) {
+			maxRowValue.add(Collections.max(values.get(rowIndex)));
+		}
+
+		for (int columnIndex = 0; columnIndex < columnSize; columnIndex++) {
 			int min = Integer.MAX_VALUE;
-			for (int innerIndex = 0; innerIndex < values.get(0).size(); innerIndex++) {
-				if (values.get(innerIndex).get(index) < min) {
-					min = values.get(innerIndex).get(index);
+			for (int rowIndex = 0; rowIndex < rowSize; rowIndex++) {
+				if (values.get(rowIndex).get(columnIndex) < min) {
+					min = values.get(rowIndex).get(columnIndex);
 				}
 			}
 			minColumnValue.add(min);
@@ -35,16 +44,16 @@ class Matrix {
 		System.out.println("Row Max " + maxRowValue);
 		System.out.println("Col Min " + minColumnValue);
 		Set<MatrixCoordinate> coordinates = new HashSet<>();
-		for(int rowIndex =0; rowIndex < values.size(); rowIndex++) {
-			for(int columnIndex =0; columnIndex < values.get(0).size(); columnIndex++) {
+		for (int rowIndex = 0; rowIndex < values.size(); rowIndex++) {
+			for (int columnIndex = 0; columnIndex < values.get(0).size(); columnIndex++) {
 
 				int current = values.get(rowIndex).get(columnIndex);
-				
+
 				System.out.println(rowIndex + "," + columnIndex + " = " + current);
-				
-				if(current == maxRowValue.get(rowIndex) && current == minColumnValue.get(columnIndex)) {
+
+				if (current == maxRowValue.get(rowIndex) && current == minColumnValue.get(columnIndex)) {
 					System.out.println("Condition satisfied for " + current);
-					coordinates.add(new MatrixCoordinate(rowIndex + 1, columnIndex+1));
+					coordinates.add(new MatrixCoordinate(rowIndex + 1, columnIndex + 1));
 				}
 			}
 		}
