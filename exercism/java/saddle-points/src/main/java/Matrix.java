@@ -14,7 +14,6 @@ class Matrix {
 		this.values = values;
 		this.maxRowValue = new ArrayList<>();
 		this.minColumnValue = new ArrayList<>();
-		System.out.println("Values " + values);
 		calculateMaxValues();
 	}
 
@@ -30,12 +29,12 @@ class Matrix {
 			}
 			minColumnValue.add(min);
 		}
-		System.out.println("Row Max " + maxRowValue);
-		System.out.println("Column Max " + minColumnValue);
-
 	}
 
 	Set<MatrixCoordinate> getSaddlePoints() {
+		System.out.println("Values " + values);
+		System.out.println("Row Max " + maxRowValue);
+		System.out.println("Column Max " + minColumnValue);
 		Set<MatrixCoordinate> coordinates = new HashSet<>();
 		for(int outerIndex =0; outerIndex < values.size(); outerIndex++) {
 			for(int innerIndex =0; innerIndex < values.get(0).size(); innerIndex++) {
