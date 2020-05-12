@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 class Yacht {
 	int[] dice;
@@ -41,17 +42,21 @@ class Yacht {
 			break;
 		case 7:
 			score = (int) Arrays.stream(dice).sum();
-			;
 			break;
 		case 8:
 			score = (int) Arrays.stream(dice).filter(i -> i == 4).count();
-			;
 			break;
 		case 9:
-			score = (int) Arrays.stream(dice).sum();
+			String str = Arrays.stream(dice).mapToObj(String::valueOf).collect(Collectors.joining());
+			if(str.contentEquals("12345")) {
+				score = 30;
+			}
 			break;
 		case 10:
-			score = (int) Arrays.stream(dice).sum();
+			String str2 = Arrays.stream(dice).mapToObj(String::valueOf).collect(Collectors.joining());
+			if(str2.contentEquals("23456")) {
+				score = 30;
+			}
 			break;
 		case 11:
 			score = (int) Arrays.stream(dice).sum();
