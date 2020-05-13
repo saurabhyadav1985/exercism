@@ -1,7 +1,19 @@
 class IsbnVerifier {
 
     boolean isValid(String stringToVerify) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        int multiplier = 10;
+        int isbn =0;
+        for(char ch: stringToVerify.toCharArray()) {
+        	if(ch != '-') {
+        		isbn = isbn + Integer.valueOf(ch)*multiplier--;
+        	}
+        }
+        if(isbn % 11 == 0) {
+        	return true;
+        }
+        else {
+        	return false;
+        }
     }
 
 }
