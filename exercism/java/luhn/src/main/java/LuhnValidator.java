@@ -1,6 +1,7 @@
 class LuhnValidator {
 
 	boolean isValid(String candidate) {
+		candidate = candidate.replaceAll(" ", "");
 		int sum = 0;
 		for (int index = candidate.length() - 1; index >= 0; index = index - 1) {
 
