@@ -6,6 +6,9 @@ class LuhnValidator {
 		boolean isEven = true;
 		for (int index = candidate.length() - 1; index >= 0; index = index - 1) {
 			isEven = !isEven;
+			if(!Character.isDigit(candidate.charAt(index))){
+				return false;
+			}
 			int value = candidate.charAt(index) - 48;
 			if (value < 0 && value > 9) {
 				return false;
