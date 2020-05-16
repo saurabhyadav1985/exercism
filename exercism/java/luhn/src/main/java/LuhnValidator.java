@@ -2,6 +2,9 @@ class LuhnValidator {
 
 	boolean isValid(String candidate) {
 		candidate = candidate.replaceAll(" ", "");
+		if("0".equals(candidate.trim())) {
+			return false;
+		}
 		int sum = 0;
 		boolean isEven = true;
 		for (int index = candidate.length() - 1; index >= 0; index = index - 1) {
