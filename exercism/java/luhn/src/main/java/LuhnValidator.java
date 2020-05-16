@@ -8,13 +8,11 @@ class LuhnValidator {
 		int sum = 0;
 		boolean isEven = true;
 		for (int index = candidate.length() - 1; index >= 0; index = index - 1) {
-
 			char ch = candidate.charAt(index);
 			if (ch != 32) {
 				if (!Character.isDigit(ch)) {
 					return false;
 				}
-
 				isEven = !isEven;
 				int value = ch - 48;
 				if (isEven) {
